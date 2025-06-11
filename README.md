@@ -32,3 +32,30 @@ Several models were applied using an AutoML model called **PyCaret**. The follow
 
 ## 📦Install dependencies:
 ```!pip install -r requirements.txt```
+
+## ▶️Run the Model:
+`python app.py`
+
+## 📌Key Findings
+* Random Forest Classifier outperformed other models with an F1 score of 0.93
+* Early Identification of Risk possible with approximately 97% accuracy.
+
+## 🌍Potential Impact
+* Can be adapted for clinical decision support system (CDSS)
+* Could aid community health workers in triage decisions in rural areas
+* Can enhance maternal care throug data driven insights
+
+## 🚀Future Work
+* Deploy as a web app
+* Integrate real-time data collection
+
+## 🤝Contribution
+Pull requests and Feedback are welcome! For major changes, please open an issue first to discuss what you would like to change
+
+## 🛡️Disclaimer
+This project is for educational purposes only and not for clinical use without medical validation
+
+## 📬Contact  
+Olayemi Victoria Oloyede  
+Data Scientist, Public Health Enthusiast  
+📧 [olayemioloyede9@gmail.com](mailto:olayemioloyede9@gmail.com)
