@@ -3,39 +3,25 @@ import joblib
 import numpy as np
 import pandas as pd
 from sklearn.base import BaseEstimator, TransformerMixin
-
-# define the BPRatio Transformer
-class BPRatio(BaseEstimator, TransformerMixin):
-    def fit(self, X, y=None):
-        return self
-
-    def transform(self, X):
-        X = X.copy()
-        X["BPRatio"] = X["Systolic BP"] / X["Diastolic"]
-        return X
     
 # define the DropSomeFeatures Transformer
 class DropSomeFeatures(BaseEstimator, TransformerMixin):
     def __init__(self, columns_to_drop=None):
-        self.columns_to_drop = columns_to_drop
+        self.columns_to_drop = columns_to_drop if columns_to_drop else []
 
     def fit(self, X, y=None):
-        if isinstance(X, pd.DataFrame):
-            self.columns_ = X.columns
+        self.actual_columns_to_drop = self.columns_to_drop
         return self
 
     def transform(self, X):
-        if isinstance(X, pd.DataFrame):
-            return X.drop(columns=self.columns_to_drop, errors="ignore")
-        else:
-            raise TypeError("Input should be a Pandas DataFrame")
+        return X.drop(columns=self.actual_columns_to_drop, errors="ignore")
 
 # Load the trained pipeline
-model = joblib.load("pregnancy risk pipeline.pkl")
+model = joblib.load("rf_pregnancy_risk_model.pkl")
 
 # Title and Subtitle
 st.title("Maternal Risk Assessment Tool")
-st.subheader("Predict whether a Pregnancy is High Risk or Low Risk")
+st.subheader("Check whether a Pregnancy (mostly below 20 weeks) is High Risk or Low Risk")
 st.markdown("Please, enter the patient's details in the following fields")
 
 # Input form
@@ -78,7 +64,7 @@ if submit:
 
     # predict using the pipeline
     prediction = model.predict(input_df)[0]
-    risk = "High Risk" if prediction == 0 else "Low Risk"
+    risk = "High Risk" if prediction == 1 else "Low Risk"
 
     # Display result
     st.success(f"This patient's pregnancy is at {risk}")
