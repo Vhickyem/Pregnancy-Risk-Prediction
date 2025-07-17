@@ -1,4 +1,5 @@
 # 🍼Pregnancy-Risk-Prediction
+<img width="600" height="930" alt="Screenshot 2025-07-17 175431" src="https://github.com/user-attachments/assets/91b1fc6c-479c-4b3c-a39f-a7aa9904f8c0" />
 
 ## 📌Overview  
 This project uses machine learning to predict pregnancy-related risks based on patient data. The goal is to support healthcare professionals in identifying high-risk pregnancies early for timely intervention and improved health outcomes.  
